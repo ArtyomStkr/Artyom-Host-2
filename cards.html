@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Juegos - ENEBAPIRATA</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50bc;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(img/bg2.jpg);
+            background-repeat: repeat;
+            background-size: 100% 30%;
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            position: relative;
+        }
+
+        .badge-category {
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+
+        .price-tag {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .rating {
+            color: #f39c12;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .game-card {
+            margin-bottom: 25px;
+        }
+
+        .game-card .card-footer {
+            background-color: white;
+            border-top: none;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .platform-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fas fa-gamepad me-2"></i>ENEBAPIRATA
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tablas.html"><i class="fas fa-table me-1"></i> Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cards.html"><i class="fas fa-id-card me-1"></i>
+                                Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt me-1"></i>
+                                Dashboard</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container banner mt-3">
+            <div class="text-center">
+                <h2><i class="fas fa-gamepad me-2"></i>Catálogo de Juegos</h2>
+                <p class="lead">Descubre los mejores títulos para todas las plataformas</p>
+
+                <div class="search-box">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Buscar juegos...">
+                        <button class="btn btn-light" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-filter me-2"></i>Filtrar por:</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm filter-btn active" data-filter="all">Todos</button>
+                                <button class="btn btn-sm filter-btn" data-filter="action">Acción</button>
+                                <button class="btn btn-sm filter-btn" data-filter="adventure">Aventura</button>
+                                <button class="btn btn-sm filter-btn" data-filter="sports">Deportes</button>
+                                <button class="btn btn-sm filter-btn" data-filter="rpg">RPG</button>
+                                <button class="btn btn-sm filter-btn" data-filter="strategy">Estrategia</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- Juego 1 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="action">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img1.jpg" class="card-img-top"
+                                alt="God of War">
+                            <span class="badge bg-danger badge-category">Acción</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">God of War: Ragnarok</h5>
+                            <p class="card-text">Kratos y Atreus se embarcan en un viaje épico en busca de respuestas y
+                                preparación para el inminente Ragnarök.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.7</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt1.jpg" alt="PS5"
+                                        class="platform-icon" title="PS5">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$59.99</span>
+                                <span class="text-success"><i class="fas fa-check-circle me-1"></i>En stock</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 2 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="sports">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img2.jpg" class="card-img-top"
+                                alt="FIFA 25">
+                            <span class="badge bg-primary badge-category">Deportes</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">FIFA 25</h5>
+                            <p class="card-text">La experiencia de fútbol más auténtica con gráficos hiperrealistas y
+                                mecánicas de juego mejoradas.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.2</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt3.jpg" alt="Xbox"
+                                        class="platform-icon" title="Xbox">
+                                    <img src="img/Button/bt1.jpg" alt="PS5"
+                                        class="platform-icon" title="PS5">
+                                    <img src="img/Button/bt2.png" alt="PC"
+                                        class="platform-icon" title="PC">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$49.99</span>
+                                <span class="text-success"><i class="fas fa-check-circle me-1"></i>En stock</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 3 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="adventure">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img3.webp" class="card-img-top"
+                                alt="Zelda">
+                            <span class="badge bg-info badge-category">Aventura</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Zelda: Tears of the Kingdom</h5>
+                            <p class="card-text">Explora los cielos y descubre los secretos del reino de Hyrule en esta
+                                esperada secuela.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt4.png" alt="Switch"
+                                        class="platform-icon" title="Nintendo Switch">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$69.99</span>
+                                <span class="text-warning"><i class="fas fa-exclamation-circle me-1"></i>Últimas
+                                    unidades</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 4 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="sports">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img14.webp" class="card-img-top"
+                                alt="NBA 2K24">
+                            <span class="badge bg-primary badge-category">Deportes</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">NBA 2K24</h5>
+                            <p class="card-text">Vive la emoción del baloncesto profesional con los equipos y jugadores
+                                actuales de la NBA.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="ms-1">4.1</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt3.jpg" alt="Xbox"
+                                        class="platform-icon" title="Xbox">
+                                    <img src="img/Button/bt1.jpg" alt="PS5"
+                                        class="platform-icon" title="PS5">
+                                    <img src="img/Button/bt2.png" alt="PC"
+                                        class="platform-icon" title="PC">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$49.99</span>
+                                <span class="text-success"><i class="fas fa-check-circle me-1"></i>En stock</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 5 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="action">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img13.webp" class="card-img-top"
+                                alt="Call of Duty">
+                            <span class="badge bg-danger badge-category">Acción</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Call of Duty: MW III</h5>
+                            <p class="card-text">Regresa la franquicia más exitosa de shooters en primera persona con
+                                nuevos mapas y modos de juego.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-1">4.5</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt3.jpg" alt="Xbox"
+                                        class="platform-icon" title="Xbox">
+                                    <img src="img/Button/bt1.jpg" alt="PS5"
+                                        class="platform-icon" title="PS5">
+                                    <img src="img/Button/bt2.png" alt="PC"
+                                        class="platform-icon" title="PC">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$69.99</span>
+                                <span class="text-warning"><i class="fas fa-exclamation-circle me-1"></i>Últimas
+                                    unidades</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 6 -->
+                <div class="col-md-4 col-sm-6 game-card" data-category="rpg">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="img/Juegos/img6.webp" class="card-img-top"
+                                alt="Elden Ring">
+                            <span class="badge bg-secondary badge-category">RPG</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Elden Ring</h5>
+                            <p class="card-text">Un mundo abierto lleno de peligros y secretos por descubrir, creado por
+                                Hidetaka Miyazaki y George R.R. Martin.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="ms-1">5.0</span>
+                                </div>
+                                <div>
+                                    <img src="img/Button/bt3.jpg" alt="Xbox"
+                                        class="platform-icon" title="Xbox">
+                                    <img src="img/Button/bt1.jpg" alt="PS5"
+                                        class="platform-icon" title="PS5">
+                                    <img src="img/Button/bt2.png" alt="PC"
+                                        class="platform-icon" title="PC">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price-tag">$59.99</span>
+                                <span class="text-danger"><i class="fas fa-times-circle me-1"></i>Agotado</span>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button class="btn btn-primary btn-sm me-2" disabled><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                            <button class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-info-circle me-1"></i>Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-gamepad me-2"></i>ENEBAPIRATA</h5>
+                        <p>Tu tienda de juegos favorita con las mejores ofertas y los últimos lanzamientos.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Enlaces</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="login.html" class="text-white">Login</a></li>
+                            <li><a href="tablas.html" class="text-white">Tablas</a></li>
+                            <li><a href="botones.html" class="text-white">Botones</a></li>
+                            <li><a href="cards.html" class="text-white">Cards</a></li>
+                            <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Contacto</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-map-marker-alt me-2"></i> La Paz, Bolivia</li>
+                            <li><i class="fas fa-phone me-2"></i> +591 12345678</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@enebapirata.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <p class="mb-0">© 2023 ENEBAPIRATA - Todos los derechos reservados</p>
+                    <p class="mb-0">Diseñado por el Docente | Desarrollado por Estudiantes</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.filter-btn').click(function () {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+
+                const filter = $(this).data('filter');
+
+                if (filter === 'all') {
+                    $('.game-card').show();
+                } else {
+                    $('.game-card').hide();
+                    $(`.game-card[data-category="${filter}"]`).show();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

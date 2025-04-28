@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de Productos - ENEBAPIRATA</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/responsive.bootstrap5.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50bc;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(img/bg2.jpg);
+            background-repeat: repeat;
+            background-size: 100% 30%;
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important;
+        }
+
+        .card-header {
+            background-color: var(--secondary-color) !important;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-danger {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: attr(aria-valuenow) '%';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge-category {
+            font-size: 0.8em;
+            padding: 5px 8px;
+        }
+
+        .action-buttons .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-gamepad me-2"></i>ENEBAPIRATA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tablas.html"><i class="fas fa-table me-1"></i> Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cards.html"><i class="fas fa-id-card me-1"></i> Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt me-1"></i>
+                            Dashboard</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 style="color: white;"><i class="fas fa-table me-2"></i>Tabla de Productos</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                        <i class="fas fa-plus me-1"></i>Agregar Producto
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-list me-2"></i>Lista de Juegos</h5>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button"
+                                    id="filterDropdown" data-bs-toggle="dropdown">
+                                    <i class="fas fa-filter me-1"></i>Filtrar
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <h6 class="dropdown-header">Categorías</h6>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Todos</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Acción</a></li>
+                                    <li><a class="dropdown-item" href="#">Aventura</a></li>
+                                    <li><a class="dropdown-item" href="#">Deportes</a></li>
+                                    <li><a class="dropdown-item" href="#">RPG</a></li>
+                                    <li><a class="dropdown-item" href="#">Estrategia</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="productsTable" class="table table-striped table-hover table-bordered"
+                                style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Juego</th>
+                                        <th>Categoría</th>
+                                        <th>Plataforma</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Popularidad</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Juego 1 - God of War -->
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>God of War: Ragnarok</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-dark badge-category">Acción/Aventura</span></td>
+                                        <td>PS5</td>
+                                        <td class="text-end">$59.99</td>
+                                        <td class="text-center">45</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 92%;" aria-valuenow="92" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip"
+                                                title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
+                                                title="Eliminar">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-bs-toggle="tooltip"
+                                                title="Detalles" data-game="gow">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 2 - FIFA 25 -->
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>FIFA 25</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-primary badge-category">Deportes</span></td>
+                                        <td>Multiplataforma</td>
+                                        <td class="text-end">$49.99</td>
+                                        <td class="text-center">32</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="fifa">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 3 - Zelda -->
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>The Legend of Zelda: Tears of the Kingdom</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-info badge-category">Aventura</span></td>
+                                        <td>Nintendo Switch</td>
+                                        <td class="text-end">$69.99</td>
+                                        <td class="text-center">18</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 78%;" aria-valuenow="78" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">Últimas unidades</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="zelda">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 4 - Final Fantasy XVI -->
+                                    <tr>
+                                        <td>4</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Final Fantasy XVI</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-secondary badge-category">RPG</span></td>
+                                        <td>PlayStation 5</td>
+                                        <td class="text-end">$69.99</td>
+                                        <td class="text-center">25</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="finalfantasy16">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 5 - Doom Eternal -->
+                                    <tr>
+                                        <td>7</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Doom Eternal</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger badge-category">Acción</span></td>
+                                        <td>PlayStation 4, Xbox One, PC</td>
+                                        <td class="text-end">$59.99</td>
+                                        <td class="text-center">40</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 95%;" aria-valuenow="95" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="doometernal">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 5 - Elden Ring -->
+                                    <tr>
+                                        <td>5</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Elden Ring</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-secondary badge-category">RPG</span></td>
+                                        <td>PlayStation 5, Xbox Series X/S, PC</td>
+                                        <td class="text-end">$59.99</td>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger">Stock crítico</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="eldenring">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 8 - Hollow Knight -->
+                                    <tr>
+                                        <td>8</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Hollow Knight</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-dark badge-category">Acción/Aventura</span></td>
+                                        <td>PC, Nintendo Switch, PlayStation 4, Xbox One</td>
+                                        <td class="text-end">$14.99</td>
+                                        <td class="text-center">8</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger">Stock crítico</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="hollowknight">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 9 - Starfield -->
+                                    <tr>
+                                        <td>9</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Starfield</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-secondary badge-category">RPG</span></td>
+                                        <td>PC, Xbox Series X/S</td>
+                                        <td class="text-end">$69.99</td>
+                                        <td class="text-center">50</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 65%;" aria-valuenow="65" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="starfield">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 10 - Axiom Verge 2 -->
+                                    <tr>
+                                        <td>10</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Axiom Verge 2</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger badge-category">Acción</span></td>
+                                        <td>PC, Nintendo Switch, PlayStation 5, Xbox Series X/S</td>
+                                        <td class="text-end">$19.99</td>
+                                        <td class="text-center">30</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                    style="width: 40%;" aria-valuenow="50" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">Últimas unidades</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="axiomverge2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 11 - AO Tennis 2 -->
+                                    <tr>
+                                        <td>11</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>AO Tennis 2</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-primary badge-category">Deportes</span></td>
+                                        <td>PC, PlayStation 4, Xbox One, Nintendo Switch</td>
+                                        <td class="text-end">$39.99</td>
+                                        <td class="text-center">30</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 50%;" aria-valuenow="30" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">Últimas unidades</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="aotennis2">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Juego 12 - Minecraft -->
+                                    <tr>
+                                        <td>12</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <span>Minecraft</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success badge-category">Survival</span></td>
+                                        <td>PC, Nintendo Switch, PlayStation 4, Xbox One, Móvil</td>
+                                        <td class="text-end">$29.99</td>
+                                        <td class="text-center">120</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">Disponible</span></td>
+                                        <td class="action-buttons">
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-info btn-details" data-game="minecraft">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title" id="addProductModalLabel"><i class="fas fa-plus-circle me-2"></i>Agregar
+                        Nuevo Juego</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="gameName" class="form-label">Nombre del Juego</label>
+                                <input type="text" class="form-control" id="gameName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gameCategory" class="form-label">Categoría</label>
+                                <select class="form-select" id="gameCategory" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="action">Acción</option>
+                                    <option value="adventure">Aventura</option>
+                                    <option value="sports">Deportes</option>
+                                    <option value="rpg">RPG</option>
+                                    <option value="strategy">Estrategia</option>
+                                    <option value="other">Otros</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="gamePlatform" class="form-label">Plataforma</label>
+                                <select class="form-select" id="gamePlatform" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="ps5">PlayStation 5</option>
+                                    <option value="xbox">Xbox Series X/S</option>
+                                    <option value="switch">Nintendo Switch</option>
+                                    <option value="pc">PC</option>
+                                    <option value="multi">Multiplataforma</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gamePrice" class="form-label">Precio ($)</label>
+                                <input type="number" step="0.01" class="form-control" id="gamePrice" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="gameStock" class="form-label">Stock</label>
+                                <input type="number" class="form-control" id="gameStock" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gameImage" class="form-label">Imagen del Juego</label>
+                                <input class="form-control" type="file" id="gameImage">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gameDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="gameDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar Juego</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white py-4 mt-4" style="background-color: #2c3e50bc;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-gamepad me-2"></i>ENEBAPIRATA</h5>
+                    <p>Tu tienda de juegos favorita con las mejores ofertas y los últimos lanzamientos.</p>
+                    <p>No te estafaremos asi que compra muuucho!!</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                        <li><a href="tablas.html" class="text-white">Tablas</a></li>
+                        <li><a href="botones.html" class="text-white">Botones</a></li>
+                        <li><a href="cards.html" class="text-white">Cards</a></li>
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> La Paz, Bolivia</li>
+                        <li><i class="fas fa-phone me-2"></i> +591 76780148</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@enebapirata.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">© 2025 ENEBAPIRATA - Todos los derechos reservados</p>
+                <p class="mb-0">Diseñado por el Docente | Desarrollado por Estudiantes</p>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap5.min.js"></script>
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/buttons.bootstrap5.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/buttons.print.min.js"></script>
+    <script src="js/dataTables.responsive.min.js"></script>
+    <script src="js/responsive.bootstrap5.min.js"></script>
+    <script src="libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Inicializar DataTable
+            $('#productsTable').DataTable({
+                dom: '<"top"Bf>rt<"bottom"lip><"clear">',
+                buttons: {
+                    dom: {
+                        button: {
+                            className: 'btn btn-sm'
+                        }
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            className: 'btn-success',
+                            text: '<i class="fas fa-file-excel me-1"></i> Excel'
+                        },
+                        {
+                            extend: 'pdf',
+                            className: 'btn-danger',
+                            text: '<i class="fas fa-file-pdf me-1"></i> PDF'
+                        },
+                        {
+                            extend: 'print',
+                            className: 'btn-primary',
+                            text: '<i class="fas fa-print me-1"></i> Imprimir'
+                        },
+                        {
+                            extend: 'copy',
+                            className: 'btn-info',
+                            text: '<i class="fas fa-copy me-1"></i> Copiar'
+                        }
+                    ]
+                },
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                },
+                responsive: true
+            });
+
+            // Inicializar tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+</body>
+
+</html>

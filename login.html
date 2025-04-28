@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ENEBAPIRATA</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #d25d50;
+        }
+        
+        body {
+            background-image: url(img/bg2.jpg);
+            background-repeat: repeat;
+            background-size: 100% 30%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .login-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(212, 205, 205, 0.405);
+        }
+        
+        .login-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        
+        .btn-login {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .brand-logo {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="text-center mb-4">
+                <i class="fas fa-gamepad brand-logo" style="color: white;"></i>
+                <h1 class="h3" style="color: white;">ENEBAPIRATA</h1>
+                <p style="color: rgba(255, 255, 255, 0.704);">Inicia sesión para acceder a tu cuenta</p>
+            </div>
+            
+            <div class="card login-card">
+                <div class="card-header login-header text-center py-3">
+                    <h4 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Recordar sesión</label>
+                        </div>
+                        <button type="submit" class="btn btn-login text-white w-100 py-2">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </button>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-transparent">
+                    <a href="#" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+                    <p class="mt-2 mb-0">¿No tienes cuenta? <a href="#" class="text-decoration-none">Regístrate</a></p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3" >
+                <a href="index.html" class="btn btn-outline-secondary btn-sm" style="color: white;">
+                    <i class="fas fa-arrow-left me-1" style="color: white;"></i>Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

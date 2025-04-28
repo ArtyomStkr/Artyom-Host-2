@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Monitores</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="DataTables/buttons.dataTables.css">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <style>
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        .card-img-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="text-center">
+            <img src="img/monitorbanner.png" class="img-fluid rounded" alt="Tienda de Monitores">
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <a class="navbar-brand" href="#"><i class="fas fa-desktop"></i> MonitoresShh</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productosDropdown" data-toggle="dropdown"><i
+                                class="fas fa-desktop"></i> Productos</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="fas fa-tv"></i> Monitores LED</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-laptop"></i> Monitores Gaming</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> Accesorios</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ofertasDropdown" data-toggle="dropdown"><i
+                                class="fas fa-tags"></i> Ofertas</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="fas fa-fire"></i> Descuentos</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-gift"></i> Promociones</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-percentage"></i> Liquidación</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center mb-4">
+                    <h3>Promociones Especiales</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="img/mon01.jpg" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Monitor Gamer 27"</h5>
+                            <p class="card-text">Alta definición y frecuencia de actualización.</p>
+                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#infoMonitor">Ver
+                                más</a>
+                        </div>
+                        <div id="infoMonitor" class="collapse">
+                            <div class="card-footer text-center">
+                                <p><i class="fas fa-check"></i> Resolución: 2560x1440</p>
+                                <p><i class="fas fa-sync-alt"></i> Frecuencia: 165Hz</p>
+                                <p><i class="fas fa-bolt"></i> Tiempo de respuesta: 1ms</p>
+                                <p><i class="fas fa-money-bill-wave"></i> Precio: $399</p>
+                                <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Agregar al
+                                    carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="img/mon02.jpg" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Monitor UltraWide 34"</h5>
+                            <p class="card-text">Pantalla curva con resolución QHD.</p>
+                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#infoMonitor2">Ver
+                                más</a>
+                        </div>
+                        <div id="infoMonitor2" class="collapse">
+                            <div class="card-footer text-center">
+                                <p><i class="fas fa-check"></i> Resolución: 3440x1440</p>
+                                <p><i class="fas fa-sync-alt"></i> Frecuencia: 144Hz</p>
+                                <p><i class="fas fa-bolt"></i> Tiempo de respuesta: 2ms</p>
+                                <p><i class="fas fa-money-bill-wave"></i> Precio: $599</p>
+                                <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Agregar al
+                                    carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="img/mon03.jpg" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Monitor Curvo 32"</h5>
+                            <p class="card-text">Diseño curvo con resolución Full HD.</p>
+                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#infoMonitor3">Ver
+                                más</a>
+                        </div>
+                        <div id="infoMonitor3" class="collapse">
+                            <div class="card-footer text-center">
+                                <p><i class="fas fa-check"></i> Resolución: 1920x1080</p>
+                                <p><i class="fas fa-sync-alt"></i> Frecuencia: 120Hz</p>
+                                <p><i class="fas fa-bolt"></i> Tiempo de respuesta: 4ms</p>
+                                <p><i class="fas fa-money-bill-wave"></i> Precio: $399</p>
+                                <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Agregar al
+                                    carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="img/mon04.jpg" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Monitor 4K 28"</h5>
+                            <p class="card-text">Alta definición con resolución 4K para detalles impresionantes.</p>
+                            <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#infoMonitor4">Ver
+                                más</a>
+                        </div>
+                        <div id="infoMonitor4" class="collapse">
+                            <div class="card-footer text-center">
+                                <p><i class="fas fa-check"></i> Resolución: 3840x2160</p>
+                                <p><i class="fas fa-sync-alt"></i> Frecuencia: 60Hz</p>
+                                <p><i class="fas fa-bolt"></i> Tiempo de respuesta: 5ms</p>
+                                <p><i class="fas fa-money-bill-wave"></i> Precio: $699</p>
+                                <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Agregar al
+                                    carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white"><b>Lista de Monitores en Venta </b>
+                            <div class="float-right">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#myModal">
+                                    <i class="fas fa-star"></i> Agregar nuevo Producto
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <!-- Botones de exportación debajo del botón 'Agregar nuevo Producto' -->
+                            <div id="exportBtn" class="mb-3">
+                            </div>
+                            <table id="tablaProductos" class="table table-hover table-striped table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th><i class="fas fa-desktop"></i> Modelo</th>
+                                        <th><i class="fas fa-dollar-sign"></i> Precio</th>
+                                        <th><i class="fas fa-boxes"></i> Stock</th>
+                                        <th><i class="fas fa-star"></i> Calidad/Precio</th>
+                                        <th><i class="fas fa-cogs"></i> Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Monitor 4K 28"</td>
+                                        <td>$799</td>
+                                        <td>8 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 75%;">75%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles3">
+                                                <i class="fas fa-info-circle"></i> Detalles
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles3" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon3.jpg" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Resolución: 3840x2160 (4K UHD)
+                                                        </li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 60Hz</li>
+                                                        <li><i class="fas fa-bolt"></i> Tiempo de respuesta: 5ms</li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, DisplayPort
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor IPS 27"</td>
+                                        <td>$349</td>
+                                        <td>20 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 80%;">80%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 65%;">65%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles4"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles4" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon4.webp" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Panel IPS para colores
+                                                            vibrantes
+                                                        </li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 75Hz</li>
+                                                        <li><i class="fas fa-eye"></i> Tecnología anti-luz azul</li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, VGA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor Gaming 240Hz 25"</td>
+                                        <td>$399</td>
+                                        <td>12 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 85%;">85%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 70%;">70%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles5"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles5" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon5.jpg" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-bolt"></i> Frecuencia ultra rápida de 240Hz
+                                                        </li>
+                                                        <li><i class="fas fa-crosshairs"></i> Tecnología FreeSync &
+                                                            G-Sync
+                                                        </li>
+                                                        <li><i class="fas fa-sync-alt"></i> Tiempo de respuesta: 0.5ms
+                                                        </li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, DisplayPort
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor Curvo 49" UltraWide</td>
+                                        <td>$799</td>
+                                        <td>8 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 55%;">55%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles6"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles6" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-5 text-center">
+                                                    <img src="img/mon6.avif" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Pantalla curva 32:9</li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 120Hz</li>
+                                                        <li><i class="fas fa-palette"></i> HDR1000 para mejor contraste
+                                                        </li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, USB-C,
+                                                            DisplayPort</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor LED 24"</td>
+                                        <td>$179</td>
+                                        <td>50 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 80%;">80%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 65%;">65%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles7"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles7" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon7.jpg" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Resolución: Full HD 1920x1080
+                                                        </li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 75Hz</li>
+                                                        <li><i class="fas fa-bolt"></i> Tiempo de respuesta: 5ms</li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, VGA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>Monitor Portátil 15.6"</td>
+                                        <td>$299</td>
+                                        <td>20 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 85%;">85%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 70%;">70%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles8"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles8" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon8.jpg" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Pantalla IPS Full HD</li>
+                                                        <li><i class="fas fa-weight"></i> Ultraligero y delgado</li>
+                                                        <li><i class="fas fa-battery-full"></i> Compatible con USB-C
+                                                            para
+                                                            carga</li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: USB-C, Mini HDMI
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor UltraWide 34"</td>
+                                        <td>$599</td>
+                                        <td>15 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 80%;">80%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 70%;">70%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles1"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    <tr id="detalles1" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img src="img/mon1.jpg" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Resolución: 3440x1440</li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 144Hz</li>
+                                                        <li><i class="fas fa-bolt"></i> Tiempo de respuesta: 2ms</li>
+                                                        <li><i class="fas fa-plug"></i> Conectividad: HDMI, DisplayPort,
+                                                            USB-C</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monitor Curvo 32"</td>
+                                        <td>$499</td>
+                                        <td>10 unidades</td>
+                                        <td>
+                                            <div>Calidad</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" style="width: 75%;">75%</div>
+                                            </div>
+                                            <div>Precio</div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" style="width: 60%;">60%</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-shopping-cart"></i>
+                                                Comprar</a>
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="collapse"
+                                                data-target="#detalles2"><i class="fas fa-info-circle"></i>
+                                                Detalles</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="detalles2" class="collapse">
+                                        <td colspan="4">
+                                            <div class="row">
+                                                <div class="col-md-4 text-center">
+                                                    <img src="img/mon2.webp" class="img-fluid rounded">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <ul>
+                                                        <li><i class="fas fa-check"></i> Diseño curvo envolvente</li>
+                                                        <li><i class="fas fa-palette"></i> Tecnología Quantum Dot</li>
+                                                        <li><i class="fas fa-sync-alt"></i> Frecuencia: 165Hz</li>
+                                                        <li><i class="fas fa-bolt"></i> Tiempo de respuesta: 1ms</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="mt-4 text-center p-3 bg-dark text-white">
+                <h4>MonitoresShh</h4>
+                <p>La mejor tienda de monitores para gamers y profesionales.</p>
+            </footer>
+        </div>
+        <script src="js/jquery.slim.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+
+        <!-- DataTables JS -->
+        <script src="DataTables/datatables.min.js"></script>
+
+        <!-- DataTables Buttons JS -->
+        <script src="DataTables/dataTables.buttons.js"></script>
+
+        <!-- Librerías para exportar (Excel, CSV, PDF) -->
+        <script src="DataTables/jszip.min.js"></script>
+        <script src="DataTables/pdfmake.min.js"></script>
+        <script src="DataTables/vfs_fonts.js"></script>
+        <script src="DataTables/buttons.html5.min.js"></script>
+        <script src="DataTables/buttons.print.min.js"></script>
+
+</body>
+
+</html>
+<form action="/action_page.php" class="needs-validation" novalidate>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Agregar Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="uname">Nombre del Producto:</label>
+                        <input type="text" class="form-control" id="uname" placeholder="Ingrese el nombre" name="uname"
+                            required>
+                        <div class="valid-feedback">Datos validos.</div>
+                        <div class="invalid-feedback">Porfavor llene este espacio.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Precio:</label>
+                        <input type="number" class="form-control" id="pwd" placeholder="Ingrese su precio del Producto"
+                            name="pswd" required>
+                        <div class="valid-feedback">Datos validos.</div>
+                        <div class="invalid-feedback">Porfavor llene este espacio.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Descripcion/ Caracteristicas:</label>
+                        <input type="text" class="form-control" id="pwd" placeholder="Ingrese las Caracteristicas"
+                            name="pswd" required>
+                        <div class="valid-feedback">Datos validos.</div>
+                        <div class="invalid-feedback">Porfavor llene este espacio.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Precio:</label>
+                        <input type="range" class="form-control-range bg-success" id="pwd" name="pswd" required>
+                        <label for="pwd">Calidad:</label>
+                        <input type="range" class="form-control-range" id="pwd" name="pswd" required>
+                        <div class="valid-feedback">Datos validos.</div>
+                        <div class="invalid-feedback">Porfavor llene este espacio.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    // Deshabilitar el envío de formularios si hay campos inválidos
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Obtener los formularios a los que queremos agregar estilos de validación
+            var forms = document.getElementsByClassName('needs-validation');
+            // Recorrerlos y prevenir el envío
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script>
+$(document).ready(function() {
+    $('#tablaProductos').DataTable({
+        dom: 'Bfrtip', // B: Buttons, f: Buscar, t: Tabla, p: Paginación
+        buttons: [
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5',
+            {
+                extend: 'copyHtml5',
+                text: 'Copiar'
+            }
+        ],
+        initComplete: function() {
+            $('#exportBtn').html($(".dt-buttons"));
+        }
+    });
+});
+</script>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones - ENEBAPIRATA</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50bc;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url(img/bg2.jpg);
+            background-repeat: repeat;
+            background-size: 100% 30%;
+        }
+
+        .navbar {
+            background-color: var(--primary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+            color: white;
+        }
+
+        .btn-gaming {
+            background: linear-gradient(45deg, #2c3e50, #4a6491);
+            border: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .btn-gaming:hover {
+            background: linear-gradient(45deg, #4a6491, #2c3e50);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-gaming:active {
+            transform: translateY(0);
+        }
+
+        .btn-gaming::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s;
+        }
+
+        .btn-gaming:hover::after {
+            left: 100%;
+        }
+
+        .section-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .section-body {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .btn-demo {
+            margin: 5px;
+            min-width: 120px;
+        }
+
+        .btn-group-demo {
+            margin-bottom: 15px;
+        }
+
+        .badge-demo {
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-gamepad me-2"></i>ENEBAPIRATA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tablas.html"><i class="fas fa-table me-1"></i> Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cards.html"><i class="fas fa-id-card me-1"></i> Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="botones.html"><i class="fas fa-toggle-on me-1"></i> Botones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt me-1"></i>
+                            Dashboard</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="text-white"><i class="fas fa-toggle-on me-2"></i>Botones</h1>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="mb-0"><i class="fas fa-square me-2"></i>Botones Básicos</h3>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Estilos estándar</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo">Primario</button>
+                            <button type="button" class="btn btn-secondary btn-demo">Secundario</button>
+                            <button type="button" class="btn btn-success btn-demo">Éxito</button>
+                            <button type="button" class="btn btn-danger btn-demo">Peligro</button>
+                            <button type="button" class="btn btn-warning btn-demo">Advertencia</button>
+                            <button type="button" class="btn btn-info btn-demo">Info</button>
+                            <button type="button" class="btn btn-light btn-demo">Claro</button>
+                            <button type="button" class="btn btn-dark btn-demo">Oscuro</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Estilos personalizados</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-accent btn-demo">Acento</button>
+                            <button type="button" class="btn btn-gaming btn-demo">
+                                <i class="fas fa-gamepad me-1"></i>Gaming
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-demo">Outline</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="mb-0"><i class="fas fa-icons me-2"></i>Botones con Iconos</h3>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Iconos a la izquierda</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo">
+                                <i class="fas fa-shopping-cart me-2"></i>Comprar
+                            </button>
+                            <button type="button" class="btn btn-success btn-demo">
+                                <i class="fas fa-check me-2"></i>Aceptar
+                            </button>
+                            <button type="button" class="btn btn-danger btn-demo">
+                                <i class="fas fa-trash me-2"></i>Eliminar
+                            </button>
+                            <button type="button" class="btn btn-info btn-demo">
+                                <i class="fas fa-info-circle me-2"></i>Detalles
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Iconos a la derecha</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo">
+                                Descargar <i class="fas fa-download ms-2"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-demo">
+                                Guardar <i class="fas fa-save ms-2"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-demo">
+                                Editar <i class="fas fa-edit ms-2"></i>
+                            </button>
+                            <button type="button" class="btn btn-dark btn-demo">
+                                Compartir <i class="fas fa-share-alt ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h4>Solo iconos</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            <button type="button" class="btn btn-info btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-info"></i>
+                            </button>
+                            <button type="button" class="btn btn-dark btn-sm rounded-circle"
+                                style="width: 40px; height: 40px;">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="mb-0"><i class="fas fa-arrows-alt-v me-2"></i>Tamaños y Estados</h3>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Tamaños</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-lg btn-demo">Grande</button>
+                            <button type="button" class="btn btn-primary btn-demo">Normal</button>
+                            <button type="button" class="btn btn-primary btn-sm btn-demo">Pequeño</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Estados</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo">Normal</button>
+                            <button type="button" class="btn btn-primary active btn-demo">Activo</button>
+                            <button type="button" class="btn btn-primary disabled btn-demo">Desactivado</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="mb-0"><i class="fas fa-object-group me-2"></i>Grupos de Botones</h3>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Grupo estándar</h4>
+                        <div class="btn-group btn-group-demo" role="group">
+                            <button type="button" class="btn btn-primary">Izquierda</button>
+                            <button type="button" class="btn btn-primary">Centro</button>
+                            <button type="button" class="btn btn-primary">Derecha</button>
+                        </div>
+
+                        <h4 class="mt-4">Grupo con dropdown</h4>
+                        <div class="btn-group btn-group-demo" role="group">
+                            <button type="button" class="btn btn-primary">Acción</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Acción</a></li>
+                                <li><a class="dropdown-item" href="#">Otra acción</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Algo más</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Grupo vertical</h4>
+                        <div class="btn-group-vertical btn-group-demo" role="group">
+                            <button type="button" class="btn btn-primary">Superior</button>
+                            <button type="button" class="btn btn-primary">Medio</button>
+                            <button type="button" class="btn btn-primary">Inferior</button>
+                        </div>
+
+                        <h4 class="mt-4">Checkbox/Radio</h4>
+                        <div class="btn-group btn-group-demo" role="group">
+                            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+
+                            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+
+                            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="section-header">
+                <h3 class="mb-0"><i class="fas fa-star me-2"></i>Botones Especiales</h3>
+            </div>
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Botones con badges</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo">
+                                Notificaciones <span class="badge bg-light text-dark badge-demo">5</span>
+                            </button>
+                            <button type="button" class="btn btn-success btn-demo">
+                                Mensajes <span class="badge bg-light text-dark badge-demo">12</span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-demo">
+                                Alertas <span class="badge bg-light text-dark badge-demo">3</span>
+                            </button>
+                        </div>
+
+                        <h4 class="mt-4">Botones de carga</h4>
+                        <div class="btn-group-demo">
+                            <button class="btn btn-primary btn-demo" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span class="visually-hidden">Cargando...</span>
+                            </button>
+                            <button class="btn btn-primary btn-demo" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Procesando...
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Botones flotantes (FAB)</h4>
+                        <div class="position-relative" style="height: 100px;">
+                            <button class="btn btn-primary rounded-circle position-absolute"
+                                style="width: 60px; height: 60px; bottom: 0; right: 0;">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+
+                        <h4 class="mt-4">Botones de toggle</h4>
+                        <div class="btn-group-demo">
+                            <button type="button" class="btn btn-primary btn-demo" data-bs-toggle="button">
+                                Toggle button
+                            </button>
+                            <button type="button" class="btn btn-primary active btn-demo" data-bs-toggle="button"
+                                aria-pressed="true">
+                                Active toggle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-gamepad me-2"></i>ENEBAPIRATA</h5>
+                    <p>Tu tienda de juegos favorita con las mejores ofertas y los últimos lanzamientos.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                        <li><a href="tablas.html" class="text-white">Tablas</a></li>
+                        <li><a href="botones.html" class="text-white">Botones</a></li>
+                        <li><a href="cards.html" class="text-white">Cards</a></li>
+                        <li><a href="dashboard.html" class="text-white">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> La Paz, Bolivia</li>
+                        <li><i class="fas fa-phone me-2"></i> +591 12345678</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@enebapirata.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">© 2023 ENEBAPIRATA - Todos los derechos reservados</p>
+                <p class="mb-0">Diseñado por el Docente | Desarrollado por Estudiantes</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
